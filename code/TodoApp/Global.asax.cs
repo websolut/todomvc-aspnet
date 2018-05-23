@@ -1,5 +1,6 @@
 ﻿namespace TodoApp
 {
+    using System.Configuration;
     using System.Data.Entity;
     using System.Web;
     using System.Web.Http;
@@ -19,6 +20,9 @@
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Add the telemetry key from config
+            Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active.InstrumentationKey = ConfigurationManager.AppSettings["APPINSIGHTS_KEY"];
         }
     }
 }
